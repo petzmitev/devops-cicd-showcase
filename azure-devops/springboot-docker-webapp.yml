@@ -1,0 +1,75 @@
+trigger:
+  branches:
+    include:
+      - main
+
+variables:
+  - name: vmImageName
+    value: ubuntu-latest
+
+  - name: tag
+    value: $(Build.BuildId)
+
+  - name: imageRepository
+    value: springboot-app
+
+  - name: dockerRegistryServiceConnection
+    value: acr-service-connection
+
+  - name: containerRegistry
+    value: your-registry.azurecr.io
+
+  - name: webAppName
+    value: your-web-app-name
+
+  - name: azureSubscription
+    value: azure-service-connection
+
+stages:
+  - stage: Build
+    displayName: Build and push stage
+
+    jobs:
+      - job: Build
+        displayName: Build Java application
+
+        pool:
+          vmImage: $(vmImageName)
+
+        steps:
+          - task: Maven@4
+            displayName: Build Spring Boot application
+            inputs:
+              mavenPOMFile: complete/pom.xml
+              goals: package spring-boot:repackage
+
+          - task: Docker@2
+            displayName: Build and push Docker image
+            inputs:
+              command: buildAndPush
+              repository: $(imageRepository)
+              dockerfile: complete/Dockerfile
+              buildContext: complete
+              containerRegistry: $(dockerRegistryServiceConnection)
+              tags: |
+                $(tag)
+
+  - stage: Deploy
+    displayName: Deploy to Azure Web App
+    dependsOn: Build
+    condition: succeeded()
+
+    jobs:
+      - job: Deploy
+        displayName: Deploy container
+
+        pool:
+          vmImage: $(vmImageName)
+
+        steps:
+          - task: AzureWebAppContainer@1
+            displayName: Deploy container to Azure Web App
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appName: $(webAppName)
+              containers: $(containerRegistry)/$(imageRepository):$(tag)
