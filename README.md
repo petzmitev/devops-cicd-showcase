@@ -1,18 +1,8 @@
 # DevOps CI/CD Showcase
 
-A collection of GitHub Actions workflows, Azure DevOps pipelines, and a sample Spring Boot application demonstrating modern CI/CD practices.
+A collection of GitHub Actions workflows and Azure DevOps pipelines created during hands-on practice and learning.
 
-## Project Overview
-
-This repository showcases different CI/CD solutions implemented during hands-on practice with GitHub Actions and Azure DevOps.
-
-The project includes:
-
-- GitHub Actions workflows
-- Azure DevOps multi-stage pipelines
-- Docker image build and publish
-- Azure Web App deployments
-- Sample Spring Boot application used for testing deployment pipelines
+This repository demonstrates modern CI/CD concepts, including automated builds, testing, Docker image publishing, Azure deployments, and multi-stage release pipelines.
 
 ---
 
@@ -30,16 +20,14 @@ devops-cicd-showcase/
 │   └── configure-azure-environment.yml
 │
 ├── azure-devops/
-│   ├── web-app-pipeline.yml
-│   └── springboot-docker-pipeline.yml
-│
-├── sample-app/
-│   └── Simple Spring Boot application
+│   ├── multi-stage-webapp-deploy.yml
+│   └── springboot-docker-webapp.yml
 │
 ├── screenshots/
-│   ├── springboot-docker-pipeline.png
-│   └── webapp-pipeline.png
+│   ├── azure-devops-springboot-deployment.png
+│   └── azure-devops-multistage-pipeline.png
 │
+├── LICENSE
 └── README.md
 ```
 
@@ -47,11 +35,11 @@ devops-cicd-showcase/
 
 # GitHub Actions
 
-This repository contains workflows covering:
+The repository includes GitHub Actions workflows demonstrating:
 
 - Python package build
 - Python test coverage
-- Docker image build and publish to GitHub Container Registry
+- Docker image build and publish to GitHub Container Registry (GHCR)
 - Azure staging deployment
 - Azure production deployment
 - Azure environment provisioning
@@ -60,9 +48,9 @@ This repository contains workflows covering:
 
 # Azure DevOps Pipelines
 
-## Web Application Pipeline
+## Multi-stage Web Application Deployment
 
-Stages:
+Pipeline stages:
 
 - Build
 - Deploy to Development
@@ -70,52 +58,27 @@ Stages:
 
 ---
 
-## Spring Boot Docker Pipeline
+## Spring Boot Docker Deployment
 
-Stages:
+Pipeline stages:
 
 - Build Maven project
 - Build Docker image
-- Push image to Azure Container Registry
+- Push image to Azure Container Registry (ACR)
 - Deploy container to Azure Web App
-
----
-
-# Sample Application
-
-The repository includes a minimal Spring Boot application used for validating the CI/CD pipelines.
-
-Available endpoints:
-
-| Endpoint | Description |
-|----------|-------------|
-| `/` | Returns a welcome message |
-| `/health` | Returns application health status |
-
-Run locally:
-
-```bash
-mvn spring-boot:run
-```
-
-Application URL:
-
-```
-http://localhost:8080
-```
 
 ---
 
 # Technologies
 
 - GitHub Actions
-- Azure DevOps
+- Azure DevOps Pipelines
 - Docker
 - GitHub Container Registry (GHCR)
 - Azure Container Registry (ACR)
-- Azure Web App
+- Azure App Service
+- Java
 - Spring Boot
-- Java 21
 - Maven
 - YAML
 
@@ -123,7 +86,21 @@ http://localhost:8080
 
 # Pipeline Results
 
-The `screenshots/` directory contains successful Azure DevOps pipeline executions included as proof of completed deployments.
+The screenshots below show successful Azure DevOps pipeline executions completed during hands-on exercises.
+
+### Spring Boot Docker Deployment
+
+![Spring Boot Docker Deployment](screenshots/azure-devops-springboot-deployment.png)
+
+### Multi-stage Azure DevOps Pipeline
+
+![Multi-stage Pipeline](screenshots/azure-devops-multistage-pipeline.png)
+
+---
+
+# Purpose
+
+This repository serves as a portfolio project demonstrating practical experience with CI/CD automation, GitHub Actions, Azure DevOps, Docker, and cloud deployment workflows.
 
 ---
 
@@ -131,9 +108,9 @@ The `screenshots/` directory contains successful Azure DevOps pipeline execution
 
 **Peter Mitev**
 
-Computer and Software Engineering student with an interest in:
+Computer and Software Engineering student with interests in:
 
 - DevOps
-- Cloud
+- Cloud Computing
 - DevSecOps
-- CI/CD Automation
+- Cybersecurity
