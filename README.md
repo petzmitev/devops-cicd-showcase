@@ -1,11 +1,26 @@
 # DevOps CI/CD Showcase
 
-This repository demonstrates several CI/CD workflows and Azure DevOps pipelines that I completed while learning GitHub Actions and Azure DevOps.
+A collection of GitHub Actions workflows, Azure DevOps pipelines, and a sample Spring Boot application demonstrating modern CI/CD practices.
 
-## Repository Structure
+## Project Overview
+
+This repository showcases different CI/CD solutions implemented during hands-on practice with GitHub Actions and Azure DevOps.
+
+The project includes:
+
+- GitHub Actions workflows
+- Azure DevOps multi-stage pipelines
+- Docker image build and publish
+- Azure Web App deployments
+- Sample Spring Boot application used for testing deployment pipelines
+
+---
+
+# Repository Structure
 
 ```
-.
+devops-cicd-showcase/
+│
 ├── github-actions/
 │   ├── python-package.yml
 │   ├── python-coverage.yml
@@ -19,56 +34,63 @@ This repository demonstrates several CI/CD workflows and Azure DevOps pipelines 
 │   └── springboot-docker-pipeline.yml
 │
 ├── sample-app/
-│   └── Spring Boot sample application
+│   └── Simple Spring Boot application
 │
-└── screenshots/
+├── screenshots/
+│   ├── springboot-docker-pipeline.png
+│   └── webapp-pipeline.png
+│
+└── README.md
 ```
 
-## Technologies
+---
 
-- GitHub Actions
-- Azure DevOps Pipelines
-- Docker
-- GitHub Container Registry (GHCR)
-- Azure App Service
-- Azure Container Registry (ACR)
-- Spring Boot
-- Java 21
-- Maven
+# GitHub Actions
 
-## GitHub Actions Workflows
+This repository contains workflows covering:
 
 - Python package build
-- Python code coverage
-- Docker image build & publish
-- Deploy to Azure Staging
-- Deploy to Azure Production
+- Python test coverage
+- Docker image build and publish to GitHub Container Registry
+- Azure staging deployment
+- Azure production deployment
 - Azure environment provisioning
 
-## Azure DevOps Pipelines
+---
 
-### Web Application Pipeline
+# Azure DevOps Pipelines
+
+## Web Application Pipeline
 
 Stages:
+
 - Build
 - Deploy to Development
 - Deploy to Staging
 
-### Spring Boot Docker Pipeline
+---
+
+## Spring Boot Docker Pipeline
 
 Stages:
-- Build Docker Image
-- Push to Azure Container Registry
-- Deploy to Azure Web App
 
-## Sample Application
+- Build Maven project
+- Build Docker image
+- Push image to Azure Container Registry
+- Deploy container to Azure Web App
 
-The repository includes a simple Spring Boot application used for demonstrating CI/CD pipelines.
+---
 
-Endpoints:
+# Sample Application
 
-- `/`
-- `/health`
+The repository includes a minimal Spring Boot application used for validating the CI/CD pipelines.
+
+Available endpoints:
+
+| Endpoint | Description |
+|----------|-------------|
+| `/` | Returns a welcome message |
+| `/health` | Returns application health status |
 
 Run locally:
 
@@ -76,16 +98,42 @@ Run locally:
 mvn spring-boot:run
 ```
 
-Open:
+Application URL:
 
 ```
 http://localhost:8080
 ```
 
-## Pipeline Results
+---
 
-Example successful pipeline executions are available in the **screenshots/** directory.
+# Technologies
 
-## Author
+- GitHub Actions
+- Azure DevOps
+- Docker
+- GitHub Container Registry (GHCR)
+- Azure Container Registry (ACR)
+- Azure Web App
+- Spring Boot
+- Java 21
+- Maven
+- YAML
 
-Peter Mitev
+---
+
+# Pipeline Results
+
+The `screenshots/` directory contains successful Azure DevOps pipeline executions included as proof of completed deployments.
+
+---
+
+# Author
+
+**Peter Mitev**
+
+Computer and Software Engineering student with an interest in:
+
+- DevOps
+- Cloud
+- DevSecOps
+- CI/CD Automation
